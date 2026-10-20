@@ -1,2 +1,3 @@
 testing
-
+const char *restrict format, ...
+fkdfkdfkdpfkpsf;d;f

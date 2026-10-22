@@ -4,6 +4,8 @@
 * **Group:** Group 4
 * **Team Leader:** Ligay Stanislav (Лигай Станислав)
 
+> 🚀 **Current tasks and work in current file [`TODO.md`](./TODO.md)**
+
 ---
 
 ## 🛠 Project Components & Ownership

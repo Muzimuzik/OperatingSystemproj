@@ -65,6 +65,19 @@ static inline int client_connect(const char *host, int port) {
     return fd;
 }
 
+static inline int write_line(int fd, const char *buf, int size) {
+    int sent = 0;
+    while (sent < size) {
+        int n = write(fd, buf + sent, size - sent);
+        if (n <= 0) {
+            return n; 
+        }
+        sent += n;
+    }
+    return sent;
+}
+
+
 /* Read one line (one message) into buf. The '\n' is removed.
    Returns 0 when the other side has closed (end of file), otherwise a positive number. */
 static inline int read_line(int fd, char *buf, int size) {

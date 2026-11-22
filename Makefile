@@ -1,23 +1,28 @@
-# Group 4 — Distributed Job Runner
-# `make` builds ./server ./worker ./client in the repo root (spec §5.1).
-# Recipe lines must start with a TAB.
-
-CC      = gcc
-CFLAGS  = -Wall -Wextra -g
-LDFLAGS = -pthread
+CC     = gcc
+CFLAGS = -Wall -Wextra -g
+LDLIBS = -pthread
 
 all: server worker client
 
-server: src/server.c src/net.h
-	$(CC) $(CFLAGS) -o server src/server.c $(LDFLAGS)
+server: src/server.c src/jobs.c src/jobs.h src/net.h
+	$(CC) $(CFLAGS) -o $@ src/server.c src/jobs.c $(LDLIBS)
 
 worker: src/worker.c src/net.h
-	$(CC) $(CFLAGS) -o worker src/worker.c $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $@ src/worker.c $(LDLIBS)
 
 client: src/client.c src/net.h
-	$(CC) $(CFLAGS) -o client src/client.c $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $@ src/client.c $(LDLIBS)
+
+tests/test_jobs: tests/test_jobs.c src/jobs.c src/jobs.h
+	$(CC) $(CFLAGS) -Isrc -o $@ tests/test_jobs.c src/jobs.c $(LDLIBS)
+
+test: tests/test_jobs
+	./tests/test_jobs
+
+check:
+	./tests/selfcheck.sh
 
 clean:
-	rm -f server worker client
+	rm -f server worker client tests/test_jobs
 
-.PHONY: all clean
+.PHONY: all test check clean

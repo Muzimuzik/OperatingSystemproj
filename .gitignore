@@ -1,0 +1,8 @@
+# build outputs (made by `make` in the repo root)
+/server
+/worker
+/client
+src/worker
+src/server_one
+*.o
+*.exe

@@ -14,9 +14,9 @@
 | :--- | :--- | :--- |
 | **`Scheduler and Policy`** | Server-side task queue management, scheduling policy implementation (SJF / Priority / FIFO), and job dispatching to workers. | **Ligay Stanislav** |
 | **`Worker and Limits`** | Worker logic: `fork()`, `exec()`, output redirection via `pipe` and `dup2()`, timeout handling, and zombie process prevention. | **Li Andrey** |
-| **`Durability and Recovery`** | Task state table (`QUEUED`, `RUNNING`, `DONE`, `CANCELLED`), `cancel` command processing, and crash resilience. | **Tsoy Lev** |
-| **`Protocol and Client`** | Network protocol specification (`protocol.h`) and client utility implementation (`submit`, `status`, `cancel`, `fetch`). | **Abdurakhmonov Usman** |
-| **`Operations, Testing & Report`** | Project build automation (`Makefile`), Git repository structure, automated test scripts (§5.4), and the final 4-page PDF report. | **Abdurakhmonov Usman** |
+| **`Durability and Recovery`** | Task state table (`QUEUED`, `RUNNING`, `DONE`, `CANCELLED`), `cancel` command processing, and crash resilience. | **Talibdjanov Mirjaxon** |
+| **`Protocol and Client`** | Network protocol specification (`protocol.h`) and client utility implementation (`submit`, `status`, `cancel`, `fetch`). | **Tsoy Lev** |
+| **`Operations, Testing & Report`** | Project build automation (`Makefile`), Git repository structure, automated test scripts (§5.4), and the final 4-page PDF report. | **Talibdjanov Mirjaxon** |
 
 ---
 

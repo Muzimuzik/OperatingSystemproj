@@ -1,0 +1,5 @@
+/server
+/worker
+/client
+/tests/test_jobs
+*.o

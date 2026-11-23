@@ -15,10 +15,10 @@ Each team member owns specific source files and is responsible for their impleme
 | Component | Owned Files | Description & Responsibilities | Owner |
 | :--- | :--- | :--- | :--- |
 | **Scheduler and Policy** | `src/server.c`<br>`src/scheduler.c`<br>`src/scheduler.h` | Core TCP server (`poll()`), multi-client handling (8+ clients), scheduling policy (**SJF** — Shortest Job First based on timeout), job dispatching to workers, and graceful `SIGTERM` shutdown. | **Ligay Stanislav** |
-| **Worker and Limits** | `src/worker.c` | Worker node logic: `fork()`, `/bin/sh -c` execution, process groups (`setpgid`), output capture via `pipe()` and `dup2()`, timeout enforcement (`SIGKILL`), slot limit (\(K\)), and zombie prevention. | **Li Andrey** |
+| **Worker and Limits** | `src/worker.c` | Worker node logic: `fork()`, `/bin/sh -c` execution, process groups (`setpgid`), output capture via `pipe()` and `dup2()`, timeout enforcement (`SIGKILL`), slot limit (K), and zombie prevention. | **Li Andrey** |
 | **Durability and Recovery** | `src/journal_store.c`<br>`src/journal_store.h`<br>`src/journal.h` | Task state machine (`QUEUED`, `RUNNING`, `DONE`, `FAILED`, `CANCELLED`, `TIMED_OUT`), `cancel` processing, write-ahead journaling (`jobs.log` with `fsync`), output persistence (`out/`), and crash recovery after `SIGKILL`. | **Tsoy Lev** |
-| **Protocol and Client** | `src/client.c`<br>`src/protocol.h`<br>`src/net.h` | Text-based TCP wire protocol specification, safe socket I/O helpers, and CLI client (`submit`, `status`, `cancel`, `fetch`). | **Abdurakhmonov Usman** |
-| **Operations, Testing & Report** | `Makefile`<br>`tests/`<br>`report.pdf` | Build automation (`make`), Git repository structure, automated test scripts (§5.4 & crash recovery tests), and the final 4-page PDF report. | **Abdurakhmonov Usman** *(Reserved for 5th member if joined)* |
+| **Protocol and Client** | `src/client.c`<br>`src/protocol.h`<br>`src/net.h` | Text-based TCP wire protocol specification, safe socket I/O helpers, and CLI client (`submit`, `status`, `cancel`, `fetch`). | **Talibdjanov Mirjaxon** |
+| **Operations, Testing & Report** | `Makefile`<br>`tests/`<br>`report.pdf` | Build automation (`make`), Git repository structure, automated test scripts (§5.4 & crash recovery tests), and the final 4-page PDF report. | **Abdurakhmonov Usman** |
 
 ---
 

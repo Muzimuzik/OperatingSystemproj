@@ -1,28 +1,16 @@
-CC     = gcc
-CFLAGS = -Wall -Wextra -g
-LDLIBS = -pthread
+CC = gcc
+CFLAGS = -Wall -Wextra
 
 all: server worker client
 
-server: src/server.c src/jobs.c src/jobs.h src/net.h
-	$(CC) $(CFLAGS) -o $@ src/server.c src/jobs.c $(LDLIBS)
+server: src/server.c src/scheduler.c src/scheduler.h src/net.h src/protocol.h src/journal.h
+	$(CC) $(CFLAGS) -o server src/server.c src/scheduler.c
 
-worker: src/worker.c src/net.h
-	$(CC) $(CFLAGS) -o $@ src/worker.c $(LDLIBS)
+worker: src/worker.c src/protocol.h
+	$(CC) $(CFLAGS) -o worker src/worker.c
 
-client: src/client.c src/net.h
-	$(CC) $(CFLAGS) -o $@ src/client.c $(LDLIBS)
-
-tests/test_jobs: tests/test_jobs.c src/jobs.c src/jobs.h
-	$(CC) $(CFLAGS) -Isrc -o $@ tests/test_jobs.c src/jobs.c $(LDLIBS)
-
-test: tests/test_jobs
-	./tests/test_jobs
-
-check:
-	./tests/selfcheck.sh
+client: src/client.c src/protocol.h
+	$(CC) $(CFLAGS) -o client src/client.c
 
 clean:
-	rm -f server worker client tests/test_jobs
-
-.PHONY: all test check clean
+	rm -f server worker client
